@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Cross-Site Scripting (XSS) Attacks</title>
+    <title>Cross-Site Scripting (XSS)</title>
     <link rel="stylesheet" href="style.css" />
     <script src="app.js" defer></script>
   </head>
@@ -11,14 +11,14 @@
     <section id="user-input">
       <form>
         <div class="form-control">
-          <label for="user-message">Your Message</label>
+          <label for="user-message">Sua mensagem</label>
           <textarea id="user-message" name="user-message"></textarea>
         </div>
         <div class="form-control">
-          <label for="message-image">Message Image</label>
+          <label for="message-image">Imagem da mensagem</label>
           <input type="text" id="message-image" name="message-image" />
         </div>
-        <button type="submit">Send Message</button>
+        <button type="submit">Enviar mensagem</button>
       </form>
     </section>
     <section id="user-messages">

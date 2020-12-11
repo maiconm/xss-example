@@ -1,51 +1,51 @@
-const userMessages = [];
+const mensagensUsuario = []
 
-const userMessageForm = document.querySelector('form');
-const userMessagesList = document.querySelector('ul');
+const formularioMensagem = document.querySelector('form')
+const listaMensagens = document.querySelector('ul')
 
-function renderMessages() {
-  let messageItems = '';
-  for (const message of userMessages) {
-    messageItems = `
-      ${messageItems}
+function renderizarMensagens() {
+  let itensMensagem = ''
+  for (const mensagem of mensagensUsuario) {
+    itensMensagem = `
+      ${itensMensagem}
       <li class="message-item">
         <div class="message-image">
-          <img src="${message.image}" alt="${message.text}">
+          <img src="${mensagem.image}" alt="${mensagem.text}">
         </div>
-        <p>${message.text}</p>
+        <p>${mensagem.text}</p>
       </li>
-    `;
+    `
   }
 
-  userMessagesList.innerHTML = messageItems;
+  listaMensagens.innerHTML = itensMensagem
 }
 
-function formSubmitHandler(event) {
-  event.preventDefault();
-  const userMessageInput = event.target.querySelector('textarea');
-  const messageImageInput = event.target.querySelector('input');
-  const userMessage = userMessageInput.value;
-  const imageUrl = messageImageInput.value;
+function enviarMensagem(event) {
+  event.preventDefault()
+  const campoMensagem = event.target.querySelector('textarea')
+  const campoImagem = event.target.querySelector('input')
+  const mensagemUsuario = campoMensagem.value
+  const urlMensagem = campoImagem.value
 
   if (
-    !userMessage ||
-    !imageUrl ||
-    userMessage.trim().length === 0 ||
-    imageUrl.trim().length === 0
+    !mensagemUsuario ||
+    !urlMensagem ||
+    mensagemUsuario.trim().length === 0 ||
+    urlMensagem.trim().length === 0
   ) {
-    alert('Please insert a valid message and image.');
-    return;
+    alert('Insira uma imagem e mensagem válida.')
+    return
   }
 
-  userMessages.push({
-    text: userMessage,
-    image: imageUrl,
-  });
+  mensagensUsuario.push({
+    text: mensagemUsuario,
+    image: urlMensagem,
+  })
 
-  userMessageInput.value = '';
-  messageImageInput.value = '';
+  campoMensagem.value = ''
+  campoImagem.value = ''
 
-  renderMessages();
+  renderizarMensagens()
 }
 
-userMessageForm.addEventListener('submit', formSubmitHandler);
+formularioMensagem.addEventListener('submit', enviarMensagem)
